@@ -1,0 +1,22 @@
+# 一. 自编码器介绍
+## 1）什么是自编码器？
+![自编码器抽象模型](https://img-blog.csdnimg.cn/20190908154448402.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwMzY0MzUx,size_16,color_FFFFFF,t_70)
+  &emsp;上图是自编码器的抽象模型。自编码器是只有一层隐层节点，输入和输出具有相同节点数的神经网络。自编码器的目的是求函数。也就是希望神经网络的输出![在这里插入图片描述](https://img-blog.csdnimg.cn/20190908154742403.png)与输入误差尽量少。由于隐藏节点数目小于输入节点，这就表示神经网络需要学习到输入样本的特征，以便进行压缩表示。如果输入样本是完全混乱的，这将会十分困难。但是当输入样本具有一定相似性（比如都是汽车），神经网络将会学习到其中的共同特征（比如车窗，车轮）这种学习是半监督的（样本无标签，但是经过了筛选）。[自编码器与神经网络的联系与区别](https://blog.csdn.net/guoyunfei20/article/details/78258897)
+  &emsp;自动编码器是一种数据的压缩算法，其中数据的压缩和解压缩函数是数据相关的、有损的、从样本中自动学习的。在大部分提到自动编码器的场合，压缩和解压缩的函数是通过神经网络实现的。
+ 
+ ##  2) 自编码器（AE）能干什么？
+   &emsp;**自编码器是一个自监督的算法**，并不是一个无监督算法。自监督学习是监督学习的一个实例，其标签产生自输入数据。要获得一个自监督的模型，你需要一个靠谱的目标跟一个损失函数，仅仅把目标设定为重构输入可能不是正确的选项。基本上，要求模型在像素级上精确重构输入不是机器学习的兴趣所在，学习到高级的抽象特征才是。事实上，当主要任务是分类、定位之类的任务时，那些对这类任务而言的最好的特征基本上都是重构输入时的最差的那种特征。
+&emsp;目前自编码器的应用主要有两个方面，第一是**数据去噪**，第二是为进行**可视化而降维**。配合适当的维度和稀疏约束，自编码器可以学习到比PCA等技术更有意思的数据投影。[自编码器实现过程](https://blog.csdn.net/u010555688/article/details/24438311)
+
+&emsp;而在最近观看的有关异常检测的论文中，作者使用了AE的变体SDAE（叠层去噪自编码器）来提取特征，使用单独的神经网络分类器（extreme learning machine）进行分类，效果还不错。**这篇文章的key idea是提取特征+分类器的组合，如果我们能优化器中的一个部件没准就是一篇新论文。**[论文原文](https://www.phmsociety.org/sites/phmsociety.org/files/phm_submission/2015/phmc_15_025.pdf)
+
+# 自编码器的一些变体
+![](https://img-blog.csdnimg.cn/20190908161130441.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQwMzY0MzUx,size_16,color_FFFFFF,t_70)
+根据对算法的不同要求，我们产生了不同变种的模型
+[具体几种变体可以点击](https://blog.csdn.net/marsjhao/article/details/73480859)
+
+
+参考文章：
+1.https://blog.csdn.net/guoyunfei20/article/details/78258897
+2.https://blog.csdn.net/marsjhao/article/details/73480859
+3.https://blog.csdn.net/u010555688/article/details/24438311)
