@@ -1,2 +1,3 @@
 # tips-for-leetcode
-no forking and more stars,thanks!
+记录贴 记录下每天刷leetcode的思考与感悟
+另我还整理了数据结构常用模型代码，可以在我的主页里查看！欢迎给我点小心心嗷
